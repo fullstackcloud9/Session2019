@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework 2</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+</head>
+<body>
+    <div class="text-center">
+        <!--center the text-->
+    <h1>Movie Database</h1>
+    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">Movie Name:</div>
+    <div class="col-md-3"><input type="text" id="search" /></div>
+    <div class="col-md-3"><input type="button" id="button" value="submit" /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+            <table class="table striped" id="table1">
+                    <thead>
+                    <tr>
+                    <th>Director</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Poster</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+            </table>
+
+
+    </div>
+
+  </div>
+ 
+</div>
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+$("#button").click(function(){
+
+    var input = $("#search").val();
+    //calling the omdb api with the name of the movie
+    var searchURL = "http://www.omdbapi.com/?t=" + input + "&apikey=46495c08";
+    //calling the url using omdb api
+    $.ajax({url: searchURL, success: function(result){
+        //display result in the table
+        var table = $("#table1");
+
+        var markup = "<tr><td>" + result.Director + "</td><td>" + result.Genre + "</td><td>" + result.Year + "</td><td>" + "<img width='80px' height='80px' src='" + result.Poster  + "'/></td></tr>";
+
+        $("#table1 tbody").append(markup);
+
+        $("#search").val("");
+        
+    }});
+
+
+
+
+
+
+
+   
+
+
+})
+
+
+
+
+});
+
+
+
+</script>
+</body>
+</html>
