@@ -1,0 +1,38 @@
+<html>
+<head>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+</head>
+<body>
+UserName:
+ <input type="text" id="user">
+ Password:
+ <input type="password" id="password">
+ <input type="button" id="submit" value="submit" />
+
+<script type="text/javascript">
+    //this is the start of jquery
+    $(document).ready(function(){
+
+        $("#submit").click(function(){
+            //retrieving data from the input boxes
+            var user = $("#user").val();
+            var password = $("#password").val();
+                //this posts data to the nodejs api
+            $.post("http://localhost:8082/login", {user: user, password: password}, function(data){
+
+                console.log(data);
+                window.location = "views/home.html";
+            })
+
+        })
+
+    })
+
+
+</script>
+</body>
+</html>
