@@ -15,14 +15,31 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-      
+   <style>
+       body{
+           font-size: 18px;
+       }
+   #adduser {
+ background-image: url("background.jpg");
+ background-color: #cccccc;
+ color:white;
+}
+
+#addbook{
+    background-image: url("books.jpg");
+    background-color: lightslategrey; 
+    font-size: 18px; 
+    padding: 20px;
+}
+   
+   </style>   
 
 </head>
 <body>
-<div class="container">
+<div style="padding:20px; border-color:lightblue; border-width:2px; border-style: dotted;" class="container">
 
 <div class="row col-md-12">
-
+        <h2 style="color:brown;">My Books</h2>
 <table class="table table-striped" id="table">
 <tr>
     <th>Book Title</th>
@@ -33,26 +50,45 @@
 
 </table>
 <h2 style="color:brown;">Add book</h2>
-<div style="border-color:black; border-style:solid; border: width 1;padding:20px" class="row">
-    <select id="selectlist"> </select> <br/> 
-Book : <input id="book" /><br/>
-Price : <input id="price" /><br/>
-Year : <input id="year" /><br/>
-Pages : <input id="pages" /><br/>
-<input  type="button" id="add" value="submit" class="btn btn-success" />
+<div id="addbook" style="border-color:black; border-style:solid; border: width 1;padding:20px" class="row col-md-5">
+    
+                <div class="col-md-offset-2 col-md-12"><select id="selectlist"> </select></div> 
+               
+                <div class="col-md-2">Book </select></div> 
+                <div class="col-md-10"><input id="book" /></div>
+
+                <div class="col-md-2">Price </select></div> 
+                <div class="col-md-10"><input id="price" /></div>
+
+                <div class="col-md-2">Year </select></div> 
+                <div class="col-md-10"><input id="year" /></div>
+
+                <div class="col-md-2">Pages </select></div> 
+                <div class="col-md-10"><input id="pages" /></div>
+        
+        <div class="col-md-offset-6 col-md-12">
+                <input  type="button" id="add" value="submit" class="btn btn-success" />
+        </div>
+        
+           
 </div>
 </div>
-<br/>
+
 <hr/>
-<h2 style="color:brown;">Add User</h2>
+
+
 <br/>
-<div style="border-color:black; border-style:solid; border: width 1;padding:20px"  class="row col-md-12">
+<div id="adduser" style="border-color:black; border-style:solid; border: width 1;padding:20px"  class="row col-md-12">
+    <h2 style="color:brown;">Add User</h2>
+
+    <div style="background-color: lightslategrey; font-size: 18px; padding: 20px;">
+       
 UserName:
  <input type="text" id="user">
  Password:
  <input type="password" id="password">
- <input type="button" id="submit" value="submit" />
-
+ <input class="btn btn-success" type="button" id="submit" value="submit" />
+</div>  
 
  </div>
  </div>
