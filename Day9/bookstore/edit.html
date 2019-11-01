@@ -1,0 +1,81 @@
+<html>
+<head>
+
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+      
+
+</head>
+<body>
+<div class="container">
+
+<div class="row col-md-12">
+
+<h2>Edit book</h2>
+<div style="border-color:black; border-style:solid; border: width 1;padding:20px" class="row">
+Book : <input id="book" />
+Price : <input id="price" />
+Year : <input id="year" />
+Pages : <input id="pages" />
+<input type="button" id="submit" value="submit" />
+</div>
+</div>
+<br/>
+ </div>
+
+
+<script type="text/javascript">
+    //this is the start of jquery
+    $(document).ready(function(){
+
+        $.urlParam = function(name){
+	        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	        return results[1] || 0;
+            }
+          var id =  $.urlParam('id'); 
+          console.log(id);
+
+        $.get("http://localhost:8082/GetBookById/" + id, function(data, status){
+               
+              console.log(data);
+                $("#book").val(data[0].bookname);
+                $("#price").val(data[0].price);
+                $("#year").val(data[0].price);
+                $("#pages").val(data[0].price);
+            });
+          
+        $("#submit").click(function(){
+            //retrieving data from the input boxes
+            var id =  $.urlParam('id'); 
+            var book = $("#book").val();
+            var price = $("#price").val();
+            var year = $("#year").val();
+            var pages = $("#pages").val();
+
+                //this posts data to the nodejs api
+            $.post("http://localhost:8082/editbook", {id: id,book: book, price: price, pages: pages,year: year}, function(data){
+
+                console.log(data);
+                window.location = "index.html";
+            })
+
+        })
+
+    })
+
+
+</script>
+</body>
+</html>
